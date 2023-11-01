@@ -3,7 +3,7 @@
 
 <suite name="Homework18">
 
-    <test name="Homework18 Test" preserve-order="false">
+    <test name="playSong Test" preserve-order="false">
         <classes>
             <class name="Homework18">
                 <methods>

@@ -48,6 +48,10 @@ public class BaseTest {
         WebElement submit = driver.findElement(By.cssSelector("[type='submit']"));
         submit.click();
     }
+    public void isAvatarDisplayed() {
+        WebElement avatarIcon = driver.findElement(By.cssSelector("[class='avatar']"));
+        Assert.assertTrue(avatarIcon.isDisplayed());
+    }
     public void clickPlayNextSongButton() {
         WebElement playNextSongBtn = driver.findElement(By.cssSelector("[data-testid='play-next-btn']"));
         playNextSongBtn.click();

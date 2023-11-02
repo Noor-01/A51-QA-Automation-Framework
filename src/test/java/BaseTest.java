@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import java.time.Duration;
 import java.util.UUID;
@@ -16,11 +17,17 @@ public class BaseTest {
     public WebDriver driver = null;
     public String url = "https://qa.koel.app/";
 
+public class BaseTest {
+    public WebDriver driver = null;
+    public String url = "https://qa.koel.app/";
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
     @BeforeMethod
+    @Parameters({"BaseURL"})
+    public void launchBrowser(String BaseURL) {
+        //Added ChromeOptions argument below to fix websocket error
     public void launchBrowser() {
         // Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
@@ -28,6 +35,7 @@ public class BaseTest {
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        url = BaseURL;
     }
     @AfterMethod
     public void closeBrowser() {
@@ -50,6 +58,36 @@ public class BaseTest {
         WebElement submit = driver.findElement(By.cssSelector("[type='submit']"));
         submit.click();
     }
+    public boolean isAvatarDisplayed() {
+        WebElement avatarIcon = driver.findElement(By.cssSelector("[class='avatar']"));
+        return avatarIcon.isDisplayed();
+    }
+    public void clickPlayNextSongButton() {
+        WebElement playNextSongBtn = driver.findElement(By.cssSelector("[data-testid='play-next-btn']"));
+        playNextSongBtn.click();
+    }
+    public void clickPlaySongButton() {
+        WebElement playSongBtn = driver.findElement(By.xpath("//span[@data-testid='play-btn']"));
+        playSongBtn.click();
+    }
+    public void isSoundBarsDisplayed() {
+        WebElement soundBars = driver.findElement(By.cssSelector("[alt='Sound bars']"));
+        Assert.assertTrue(soundBars.isDisplayed());
+    }
+    public void clickPlaylist() {
+        WebElement playList = driver.findElement(By.xpath("//section[@id='playlists']//li[6]"));
+        playList.click();
+    }
+    public void clickDeletePlaylistBtn() {
+        WebElement deletePlayList = driver.findElement(By.cssSelector("[class='del btn-delete-playlist']"));
+        deletePlayList.click();
+    }
+    public String deletedPlaylistConfirmationMessage() {
+        WebElement confirmationMessage = driver.findElement(By.cssSelector("div.success.show"));
+        return confirmationMessage.getText();
+    }
+
+}
     public void clickAvatarIcon() {
         WebElement avatarIcon = driver.findElement(By.cssSelector("img.avatar"));
         avatarIcon.click();

@@ -1,3 +1,5 @@
+import org.testng.annotations.Test;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,6 +40,13 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url); // "https://qa.koel.app/"
     }
     @Test
+    public void loginValidEmailValidPassword() {
+
+        navigateToPage();
+        provideEmail("demo@class.com");
+        providePassword("te$t$tudent");
+        clickSubmit();
+        isAvatarDisplayed();
     public void registrationNavigation() {
 
         ChromeOptions options = new ChromeOptions();

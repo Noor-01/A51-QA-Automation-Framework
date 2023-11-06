@@ -11,5 +11,4 @@ public class Homework21 extends BaseTest {
         enterNewPlaylistName();
         Assert.assertEquals(getRenamePlaylistSuccessMsg(), updatedPlaylistMsg);
     }
-
 }

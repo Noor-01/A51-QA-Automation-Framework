@@ -14,6 +14,7 @@ import java.time.Duration;
 public class BaseTest {
     public WebDriver driver = null;
     public String url = "https://qa.koel.app/";
+    
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();

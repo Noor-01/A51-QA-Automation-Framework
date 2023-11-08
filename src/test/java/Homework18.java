@@ -9,10 +9,8 @@ public class Homework18 extends BaseTest {
         provideEmail("demo@class.com");
         providePassword("te$t$tudent");
         clickSubmit();
-        Thread.sleep(2000);
         clickPlayNextSongButton();
         clickPlaySongButton();
-        Thread.sleep(2000);
         isSoundBarsDisplayed();
     }
 }

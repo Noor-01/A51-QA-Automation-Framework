@@ -1,3 +1,4 @@
+import PageObjectModel.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -16,10 +17,10 @@ import java.time.Duration;
 import java.util.List;
 
 public class BaseTest {
-    public WebDriver driver = null;
-    public String BaseURL = "https://qa.koel.app/";
-    public WebDriverWait wait;
-    Actions actions;
+    public static WebDriver driver = null;
+    public static String BaseURL = "https://qa.koel.app/";
+    public static WebDriverWait wait = null;
+    public static Actions actions = null;
     String NewPlaylistName = "Renamed Playlist";
     String updatedPlaylistMsg = "Updated playlist \"Renamed Playlist.\"";
 

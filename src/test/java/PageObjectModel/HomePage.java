@@ -12,13 +12,13 @@ public class HomePage extends BasePage {
         super(givenDriver);
     }
 
-    By userAvaterIcon   = By.cssSelector("img.avatar");
-    By selectPlaylist = By.xpath("//section[@id='playlists']//li[8]");
-    By playlistInputField = By.cssSelector("[name='name']");
-    By renamePlaylistSuccessMsg = By.cssSelector("div.success.show");
+    private By userAvatarIcon   = By.cssSelector("img.avatar");
+    private By selectPlaylist = By.xpath("//section[@id='playlists']//li[8]");
+    private By playlistInputField = By.cssSelector("[name='name']");
+    private By renamePlaylistSuccessMsg = By.cssSelector("div.success.show");
 
     public WebElement getUserAvatar() {
-        return findElement(userAvaterIcon);
+        return findElement(userAvatarIcon);
     }
 
     public void doubleClickPlaylist() {

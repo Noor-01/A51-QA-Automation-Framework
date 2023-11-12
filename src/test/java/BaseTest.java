@@ -1,3 +1,4 @@
+import PageObjectModel.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,22 +12,32 @@ import org.testng.annotations.BeforeSuite;
 import java.time.Duration;
 
 public class BaseTest {
-    public WebDriver driver = null;
-    public String url = "https://qa.koel.app/";
-    
+    public static WebDriver driver = null;
+    public static String BaseURL = "https://qa.koel.app/";
+    public static WebDriverWait wait = null;
+    public static Actions actions = null;
+    String NewPlaylistName = "Renamed Playlist";
+    String updatedPlaylistMsg = "Updated playlist \"Renamed Playlist.\"";
+
+
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeMethod
+    @Parameters({"BaseURL"})
     public void launchBrowser(String BaseURL) {
         //Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        actions = new Actions(driver);
+        driver.manage().window().maximize();
+        navigateToPage();
     }
   
     @AfterMethod
@@ -36,18 +47,14 @@ public class BaseTest {
     public void navigateToPage() {
         driver.get(url);
     }
-    public void provideEmail(String email) {
-        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
+    public void login() {
+        WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='email']")));
         emailField.clear();
-        emailField.sendKeys(email);
-    }
-    public void providePassword(String password) {
-        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
+        emailField.sendKeys("noor.alam@testpro.io");
+        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='password']")));
         passwordField.clear();
-        passwordField.sendKeys(password);
-    }
-    public void clickSubmit() {
-        WebElement submit = driver.findElement(By.cssSelector("[type='submit']"));
+        passwordField.sendKeys("te$t$tudent");
+        WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='submit']")));
         submit.click();
     }
     public boolean isAvatarDisplayed() {

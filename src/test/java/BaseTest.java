@@ -21,6 +21,7 @@ public class BaseTest {
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
+  
     @BeforeMethod
     @Parameters({"BaseURL"})
     public void launchBrowser(String BaseURL) {
@@ -33,6 +34,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         navigateToPage();
     }
+
     @AfterMethod
     public void closeBrowser() {
         driver.quit();

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+
 public class HomePage extends BasePage {
 
     public HomePage(WebDriver givenDriver) {
@@ -17,8 +18,10 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//section[@id='playlists']//li[8]")
     WebElement selectPlaylist;
+  
     @FindBy(css = "[name='name']")
     WebElement playlistInputField;
+  
     @FindBy(css = "div.success.show")
     WebElement renamePlaylistSuccessMsg;
 

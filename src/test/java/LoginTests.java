@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
+
     @Test
     public void loginValidEmailPassword() {
 
@@ -15,5 +16,4 @@ public class LoginTests extends BaseTest {
                  .clickSubmitBtn();
 
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-    }
-}
+

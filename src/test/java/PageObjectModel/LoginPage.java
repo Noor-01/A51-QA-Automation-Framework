@@ -11,8 +11,10 @@ public class LoginPage extends BasePage {
     }
     @FindBy(css = "[type='email']")
     WebElement emailField;
+  
     @FindBy(css = "[type='password']")
     WebElement passwordField;
+  
     @FindBy(css = "[type='submit']")
     WebElement clickSubmit;
 

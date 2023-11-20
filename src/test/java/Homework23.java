@@ -2,10 +2,10 @@ import PageObjectModel.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTests extends BaseTest {
+public class Homework23 extends BaseTest {
 
     @Test
-    public void loginValidEmailPassword() {
+    public void renamePlaylist() {
 
         LoginPage loginPage = new LoginPage(driver);
 
@@ -14,6 +14,5 @@ public class LoginTests extends BaseTest {
                 .clickSubmitBtn();
 
         Assert.assertTrue(loginPage.isAvatarDisplayed());
-
     }
 }

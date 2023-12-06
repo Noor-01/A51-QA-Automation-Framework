@@ -13,7 +13,7 @@ public class HomePage extends BasePage {
     }
 
     private By userAvatarIcon   = By.cssSelector("img.avatar");
-    private By selectPlaylist = By.xpath("//section[@id='playlists']//li[8]");
+    private By selectPlaylist = By.xpath("//section[@id='playlists']//li[10]");
     private By playlistInputField = By.cssSelector("[name='name']");
     private By renamePlaylistSuccessMsg = By.cssSelector("div.success.show");
 
@@ -35,4 +35,5 @@ public class HomePage extends BasePage {
         //WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return findElement(renamePlaylistSuccessMsg).getText();
     }
+
 }

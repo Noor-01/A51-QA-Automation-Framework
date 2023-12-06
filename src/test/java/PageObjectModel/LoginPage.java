@@ -11,6 +11,7 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
     }
+    //Page Factory Locators:
     @FindBy(css = "[type='email']")
     WebElement emailField;
 
@@ -20,6 +21,13 @@ public class LoginPage extends BasePage {
     @FindBy(css = "[type='submit']")
     WebElement clickSubmit;
 
+    //Page Object Model Locators:
+    private By emailTxtField = By.cssSelector("[type='email']");
+    private By passworTxtdField = By.cssSelector("[type='password']");
+    private By submitLoginButton = By.cssSelector("[type='submit']");
+
+
+    //Page Factory Method:
     public LoginPage provideEmail(String email) {
         emailField.sendKeys(email);
         return this;
@@ -37,4 +45,22 @@ public class LoginPage extends BasePage {
         return avatarIcon.isDisplayed();
     }
 
+    //Page Object Model Method:
+
+    public void provideEmailToLogin(String email) {
+        findElement(emailTxtField).sendKeys(email);
+    }
+    public void providePasswordToLogin(String password) {
+        findElement(passworTxtdField).sendKeys(password);
+    }
+    public void clickSubmitToLogin() {
+        findElement(submitLoginButton).click();
+    }
+//    public void login() {
+//        provideEmail("noor.alam@testpro.io");
+//        providePassword("te$t$tudent");
+//        clickSubmit();
+//    }
+
 }
+
